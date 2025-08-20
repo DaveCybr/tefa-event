@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../core/notifications_helper.dart';
 import 'api_client.dart';
+import 'deeplink_service.dart';
 import 'storage_service.dart';
 
 class FCMService {
@@ -119,26 +120,8 @@ class FCMService {
     log('Message opened app: ${message.messageId}');
     log('Data: ${message.data}');
 
-    await _handleDeepLink(message.data);
-  }
-
-  static Future<void> _handleDeepLink(Map<String, dynamic> data) async {
-    try {
-      if (data.containsKey('order_id')) {
-        final orderId = data['order_id'];
-        log('Deep linking to order: $orderId');
-
-        await StorageService.saveDeviceId('pending_order_$orderId');
-      }
-
-      if (data.containsKey('event_id')) {
-        final eventId = data['event_id'];
-        log('Deep linking to event: $eventId');
-        await StorageService.saveDeviceId('pending_event_$eventId');
-      }
-    } catch (e) {
-      log('Error handling deep link: $e');
-    }
+    // Gunakan NavigationService
+    await NavigationService.handleDeepLink(message.data);
   }
 
   static void _setupTokenRefreshListener() {

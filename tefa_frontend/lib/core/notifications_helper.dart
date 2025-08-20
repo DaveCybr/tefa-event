@@ -3,6 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/foundation.dart';
 import 'package:timezone/timezone.dart' as tz;
 
+import '../services/deeplink_service.dart';
 import 'app_theme.dart';
 
 class NotificationHelper {
@@ -140,31 +141,27 @@ class NotificationHelper {
   /// Handle notification payload for deep linking
   static void _handleNotificationPayload(String payload) {
     try {
-      if (payload.startsWith('order_')) {
-        final orderId = payload.replaceFirst('order_', '');
-        log('Navigate to order: $orderId');
-
-        // Store pending navigation (will be handled by app router)
-        _setPendingNavigation('order', orderId);
-      } else if (payload.startsWith('event_')) {
+      if (payload.startsWith('event_')) {
         final eventId = payload.replaceFirst('event_', '');
         log('Navigate to event: $eventId');
-
-        _setPendingNavigation('event', eventId);
+        _navigateToEvent(eventId);
       }
     } catch (e) {
       log('Error handling notification payload: $e');
     }
   }
 
-  /// Set pending navigation (to be handled by app)
-  static void _setPendingNavigation(String type, String id) {
-    // This could be handled by a global navigation service
-    // For now, we'll use a simple approach with shared preferences
-    // The app will check for pending navigation on startup/resume
-
-    log('Pending navigation set: $type -> $id');
-    // Implementation will be in the main app router
+  /// Navigate to event detail
+  static void _navigateToEvent(String eventId) {
+    try {
+      final eventIdInt = int.tryParse(eventId);
+      if (eventIdInt != null) {
+        // Use global navigator key to navigate
+        NavigationService.handleDeepLink({'event_id': eventIdInt});
+      }
+    } catch (e) {
+      log('Error navigating to event: $e');
+    }
   }
 
   /// Show scheduled notification (Fixed version)

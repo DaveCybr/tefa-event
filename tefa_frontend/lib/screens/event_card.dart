@@ -265,46 +265,46 @@ class EventCard extends StatelessWidget {
                 ],
               ),
 
-              // Price (if event is paid)
-              if (event.price.isNotEmpty &&
-                  event.price != '0' &&
-                  event.price != 'Free') ...[
-                const SizedBox(height: 8),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.accent.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                      color: AppColors.accent.withOpacity(0.3),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(
-                        Icons.payments_outlined,
-                        size: 16,
-                        color: AppColors.accent,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        event.price.startsWith('Rp')
-                            ? event.price
-                            : 'Rp ${event.price}',
-                        style: const TextStyle(
-                          color: AppColors.accent,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              // // Price (if event is paid)
+              // if (event.price.isNotEmpty &&
+              //     event.price != '0' &&
+              //     event.price != 'Free') ...[
+              //   const SizedBox(height: 8),
+              //   Container(
+              //     padding: const EdgeInsets.symmetric(
+              //       horizontal: 10,
+              //       vertical: 6,
+              //     ),
+              //     decoration: BoxDecoration(
+              //       color: AppColors.accent.withOpacity(0.1),
+              //       borderRadius: BorderRadius.circular(8),
+              //       border: Border.all(
+              //         color: AppColors.accent.withOpacity(0.3),
+              //       ),
+              //     ),
+              //     child: Row(
+              //       mainAxisSize: MainAxisSize.min,
+              //       children: [
+              //         const Icon(
+              //           Icons.payments_outlined,
+              //           size: 16,
+              //           color: AppColors.accent,
+              //         ),
+              //         const SizedBox(width: 6),
+              //         Text(
+              //           event.price.startsWith('Rp')
+              //               ? event.price
+              //               : 'Rp ${event.price}',
+              //           style: const TextStyle(
+              //             color: AppColors.accent,
+              //             fontSize: 13,
+              //             fontWeight: FontWeight.w600,
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ],
 
               // Creator info
               if (event.creator != null) ...[

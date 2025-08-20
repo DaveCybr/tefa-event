@@ -1,10 +1,13 @@
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import '../../models/event_model.dart';
 import '../models/user_model.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://192.168.1.5:8000/api';
+  // Get base URL from environment
+  static String get baseUrl =>
+      dotenv.env['API_BASE_URL'] ?? 'http://localhost:8000/api';
 
   // Headers
   static Map<String, String> _getHeaders({String? token}) {
