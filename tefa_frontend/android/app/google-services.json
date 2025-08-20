@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "961056777446",
+    "project_id": "event-app-c0cf9",
+    "storage_bucket": "event-app-c0cf9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961056777446:android:302aa96b85b5ddfbf4c727",
+        "android_client_info": {
+          "package_name": "com.example.event_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEUi1a1TYvNU4pXnPm0-i2UGjWBn-gYHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961056777446:android:ad6e4d52442eb457f4c727",
+        "android_client_info": {
+          "package_name": "com.example.tefa_frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEUi1a1TYvNU4pXnPm0-i2UGjWBn-gYHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
